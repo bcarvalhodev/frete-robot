@@ -22,7 +22,7 @@ def executar_robo(origem, destino):
     chrome_options.add_argument("--headless")  # Executa sem interface gráfica
 
     # Define o caminho do Chrome (importante para o Render)
-    chrome_options.binary_location = "/usr/bin/google-chrome"
+    chrome_options.binary_location = "/opt/render/project/src/chrome-linux64/chrome"
 
     # Iniciar o ChromeDriver
     service = Service(ChromeDriverManager().install())
