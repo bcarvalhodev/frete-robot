@@ -19,6 +19,10 @@ def executar_robo(origem, destino):
     chrome_options = Options()
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--headless")  # Executa sem interface gráfica
+
+    # Define o caminho do Chrome (importante para o Render)
+    chrome_options.binary_location = "/usr/bin/google-chrome"
 
     # Iniciar o ChromeDriver
     service = Service(ChromeDriverManager().install())
