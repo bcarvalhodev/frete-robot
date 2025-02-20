@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robô de Cotação de Frete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Robô de Cotação de Frete</h1>
+            <p>Preencha as informações abaixo para consultar a cotação de frete.</p>
+        </header>
+
+        <form action="/" method="POST">
+            <div class="input-group">
+                <label for="origem">Origem:</label>
+                <input type="text" id="origem" name="origem" required placeholder="Exemplo: São Paulo">
+            </div>
+            <div class="input-group">
+                <label for="destino">Destino:</label>
+                <input type="text" id="destino" name="destino" required placeholder="Exemplo: Rio de Janeiro">
+            </div>
+            <button type="submit">Executar Cotação</button>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado">
+            <h2>Resultado da Cotação:</h2>
+            <ul>
+                {% for email in resultado %}
+                    <li>{{ email }}</li> <!-- Cada email será mostrado corretamente -->
+                {% endfor %}
+            </ul>
+            <p><a href="{{ url_for('download') }}" class="btn">Baixar arquivo Excel com os emails</a></p>
+        </div>
+        {% else %}
+            <p>Nenhum email encontrado.</p>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
